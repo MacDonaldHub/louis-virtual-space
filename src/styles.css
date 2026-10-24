@@ -117,7 +117,7 @@
 .services-foot p { color: var(--muted-foreground); font-size: 12px; line-height: 1.75; margin: 0; max-width: 560px; }
 @media(max-width: 800px) {
  .page-shell { margin: 16px 16px 0; } .top-links { gap: 16px; } .top-links a { display: none; }
- .cover { height: 320px; } .cover-copy { left: 28px; top: 48px; } .cover h1 { font-size: 36px; } .cover h1 span { font-size: 22px; }
+ .cover { height: 320px; } .cover-copy { left: 28px; top: 48px; } .cover h1 { font-size: 36px; } .cover h1 span { font-size: 22px; } .cover > img { object-position: 18% center; } .cover::after { background: linear-gradient(90deg, oklch(0.25 0.10 258 / 0.97), oklch(0.30 0.10 258 / 0.9) 55%, oklch(0.3 0.05 258 / 0.35) 100%); }
  .profile-main { flex-wrap: wrap; gap: 12px; padding-bottom: 20px; } .avatar { width: 95px; height: 95px; } .profile-name { font-size: 21px; }
  .profile-actions { width: 100%; margin-left: 0; } .profile-actions > * { flex: 1; } .profile-band { padding: 0 20px; }
  .content-grid { grid-template-columns: 1fr; } .info-card { order: 2; } .footer { margin: 24px 20px; }
