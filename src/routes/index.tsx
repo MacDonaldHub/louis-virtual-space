@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { useState, type FormEvent } from 'react';
-import { ArrowDownToLine, ArrowRight, BadgeCheck, CalendarDays, Check, CheckCircle2, ClipboardList, Clock, Globe, Heart, Laptop, Mail, MapPin, MessageCircle, Monitor, Send, ShieldCheck, Sparkles, Users, Zap } from 'lucide-react';
+import { ArrowDownToLine, ArrowRight, BadgeCheck, Banknote, CalendarDays, Check, CheckCircle2, ClipboardList, Clock, Globe, Heart, Laptop, Mail, MapPin, MessageCircle, Monitor, Send, ShieldCheck, Sparkles, Users, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import officeImage from '@/assets/macdonald-office.jpg';
@@ -23,10 +23,16 @@ const services = [
  { icon: Users, name: 'Social Media Support', description: 'Show up consistently and stay connected with the people who matter.', tasks: 'Content scheduling · Community support' },
  { icon: MessageCircle, name: 'Customer Support', description: 'Thoughtful, friendly responses that make your customers feel heard.', tasks: 'Customer inquiries · Follow-ups' },
 ];
-const coreServices = [
+export const coreServices = [
  { icon: CalendarDays, name: 'Scheduling & Calendar', short: 'scheduling', tone: 'tone-cal', description: 'Your week, planned without the endless back-and-forth. I find the time, send the invite, and make sure nothing lands on top of something else.', tasks: ['Book and confirm meetings', 'Reschedules handled calmly', 'Time-zone friendly reminders', 'A gentle preview of what’s coming'], commitment: 'Meetings usually sorted the same day' },
  { icon: Mail, name: 'Email & Inbox', short: 'email', tone: 'tone-mail', description: 'A calmer inbox where the important things rise to the top and the noise never reaches you. Replies drafted in your voice, ready for your nod.', tasks: ['Sort, flag and archive', 'Draft replies in your voice', 'Follow-ups tracked to the end', 'Newsletters and noise filtered'], commitment: 'Inbox tidied every weekday' },
  { icon: ClipboardList, name: 'Everyday Admin', short: 'admin', tone: 'tone-admin', description: 'The small, necessary jobs that quietly eat your day. Data entry, prep, paperwork and research — done properly and out of your way.', tasks: ['Data entry and record updates', 'Travel and appointment prep', 'Documents named and filed', 'Research and quick summaries'], commitment: 'Weekly batch, or as it comes' },
+];
+export const hourly = { rate: '$25', unit: 'an hour', note: 'Billed in half-hour blocks. No minimum hours and no contract — for the weeks when you just need a hand.' };
+export const packages = [
+ { name: 'Starter', bestFor: 'A calmer week, without much planning', price: '$240', per: 'a month', hours: '10 hours a month', featured: false, includes: ['Scheduling for one person', 'Inbox tidied twice a week', 'Admin tasks in one weekly batch', 'A short note on what got done'] },
+ { name: 'Regular', bestFor: 'The steady hand most people need', price: '$560', per: 'a month', hours: '25 hours a month', featured: true, includes: ['Scheduling handled daily', 'Inbox tidied every weekday', 'Admin tasks as they come', 'Draft replies written in your voice'] },
+ { name: 'Full support', bestFor: 'A full second pair of hands', price: '$1,000', per: 'a month', hours: '50 hours a month', featured: false, includes: ['Calendar, inbox and admin covered', 'Priority same-day turnaround', 'Social media and customer help', 'A monthly review of what’s working'] },
 ];
 function Index() {
  const [tab, setTab] = useState('Overview');
@@ -44,7 +50,7 @@ function Index() {
  return <>
   <header className="site-nav"><div className="nav-inner">
    <a className="brand" href="#"><span className="brand-mark">ml<span className="sr-only">MacDonald Louis</span></span>MacDonald Louis</a>
-   <nav className="top-links" aria-label="Main navigation"><a href="#profile" onClick={() => setTab('Overview')}>Home</a><a href="#content" onClick={() => setTab('About')}>About me</a><a href="#services" onClick={() => setTab('Services')}>Services</a><Button onClick={() => contact()}><MessageCircle /> Let’s connect</Button></nav>
+   <nav className="top-links" aria-label="Main navigation"><a href="#profile" onClick={() => setTab('Overview')}>Home</a><a href="#content" onClick={() => setTab('About')}>About me</a><a href="#services" onClick={() => setTab('Services')}>Services</a><a href="#pricing">Rates</a><Button onClick={() => contact()}><MessageCircle /> Let’s connect</Button></nav>
   </div></header>
   <main className="page-shell">
    <section className="cover" aria-label="Meet MacDonald Louis">
@@ -82,8 +88,24 @@ function Index() {
     </div>
     <div className="services-foot"><div><h3>Not sure where to start?</h3><p>Tell me what keeps landing on your desk, and we’ll shape a support plan that fits — one task, one day a week, or simply as you need it.</p></div><Button variant="outline" onClick={() => contact()}>Start the conversation <ArrowRight/></Button></div>
    </section>
+   <section className="pricing-section" id="pricing" aria-labelledby="pricing-title">
+    <div className="services-intro"><span className="services-eyebrow"><Banknote size={14}/> Plain rates, no surprises</span><h2 id="pricing-title">Pick the support that fits your week</h2><p>Every option below covers scheduling, email and everyday admin. Compare them side by side, then tell me which one feels right.</p></div>
+    <div className="hourly"><div className="hourly-price"><strong>{hourly.rate}</strong><span>{hourly.unit}</span></div><p>{hourly.note}</p><Button variant="outline" onClick={() => contact('Pay as you go')}>Ask about hourly help <ArrowRight/></Button></div>
+    <div className="pricing-list">
+     {packages.map(pkg => <article className={`price-card ${pkg.featured ? 'featured' : ''}`} key={pkg.name}>
+      {pkg.featured && <span className="price-flag">Most chosen</span>}
+      <h3>{pkg.name}</h3>
+      <p className="price-best">{pkg.bestFor}</p>
+      <div className="price-line"><strong>{pkg.price}</strong><span>{pkg.per}</span></div>
+      <p className="offer-time"><Clock size={13}/> {pkg.hours}</p>
+      <ul className="offer-tasks">{pkg.includes.map(item => <li key={item}><Check size={13}/>{item}</li>)}</ul>
+      <Button variant={pkg.featured ? 'default' : 'secondary'} className="w-full" onClick={() => contact(pkg.name)}>Start with {pkg.name} <ArrowRight/></Button>
+     </article>)}
+    </div>
+    <div className="services-foot"><div><h3>Rates are a starting point</h3><p>The prices above are starting rates. We’ll confirm the exact hours and the cost together before any work begins.</p></div><Button variant="outline" onClick={() => contact()}>Get a quote <ArrowRight/></Button></div>
+   </section>
   </main>
   <footer className="footer"><span>© 2026 MacDonald Louis. Made for meaningful connections.</span><span>Independent portfolio <Heart size={11}/></span></footer>
-  <Dialog open={contactOpen} onOpenChange={setContactOpen}><DialogContent className="max-w-md"><DialogHeader><DialogTitle>Let’s make your day a little lighter.</DialogTitle><DialogDescription>Tell MacDonald what you have in mind.</DialogDescription></DialogHeader><form className="inquiry-form" onSubmit={saveInquiry}><label className="form-field">Your name<input name="name" placeholder="Full name" required/></label><label className="form-field">Email address<input name="email" type="email" placeholder="you@example.com" required/></label><label className="form-field">How can I help?<select name="service" value={selectedService} onChange={event => setSelectedService(event.target.value)}><option>General support</option>{[...new Set([...coreServices.map(offer => offer.name), ...services.map(service => service.name)])].map(name => <option key={name}>{name}</option>)}</select></label><label className="form-field">A little about your project<textarea name="message" rows={3} placeholder="What would you like a helping hand with?" required/></label><p className="dialog-note">Contact details are coming soon. For now, save your inquiry as a draft — it won’t be sent.</p><Button type="submit"><ArrowDownToLine/>{downloaded ? 'Download draft again' : 'Save inquiry draft'}</Button>{downloaded && <p className="text-success text-xs flex items-center gap-2" role="status"><CheckCircle2 size={15}/> Your inquiry draft has been downloaded. Nothing was sent.</p>}</form></DialogContent></Dialog>
+  <Dialog open={contactOpen} onOpenChange={setContactOpen}><DialogContent className="max-w-md"><DialogHeader><DialogTitle>Let’s make your day a little lighter.</DialogTitle><DialogDescription>Tell MacDonald what you have in mind.</DialogDescription></DialogHeader><form className="inquiry-form" onSubmit={saveInquiry}><label className="form-field">Your name<input name="name" placeholder="Full name" required/></label><label className="form-field">Email address<input name="email" type="email" placeholder="you@example.com" required/></label><label className="form-field">How can I help?<select name="service" value={selectedService} onChange={event => setSelectedService(event.target.value)}><option>General support</option>{[...new Set(['Pay as you go', ...packages.map(pkg => pkg.name), ...coreServices.map(offer => offer.name), ...services.map(service => service.name)])].map(name => <option key={name}>{name}</option>)}</select></label><label className="form-field">A little about your project<textarea name="message" rows={3} placeholder="What would you like a helping hand with?" required/></label><p className="dialog-note">Contact details are coming soon. For now, save your inquiry as a draft — it won’t be sent.</p><Button type="submit"><ArrowDownToLine/>{downloaded ? 'Download draft again' : 'Save inquiry draft'}</Button>{downloaded && <p className="text-success text-xs flex items-center gap-2" role="status"><CheckCircle2 size={15}/> Your inquiry draft has been downloaded. Nothing was sent.</p>}</form></DialogContent></Dialog>
  </>;
 }
