@@ -6,6 +6,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import officeImage from '@/assets/macdonald-office.jpg';
 import coverImage from '@/assets/macdonald-cover.jpg';
 import portraitImage from '@/assets/macdonald-portrait.jpg';
+import coverPhoneImage from '@/assets/macdonald-cover-phone.jpg';
 
 export const Route = createFileRoute('/')({
  head: () => ({ meta: [
@@ -47,7 +48,8 @@ function Index() {
   </div></header>
   <main className="page-shell">
    <section className="cover" aria-label="Meet MacDonald Louis">
-    <img src={coverImage} width={1536} height={512} alt="MacDonald Louis, virtual assistant, in front of a colourful mural" />
+     <img className="cover-wide" src={coverImage} width={1536} height={512} alt="MacDonald Louis, virtual assistant, in front of a colourful mural" />
+     <img className="cover-phone" src={coverPhoneImage} width={1024} height={880} alt="MacDonald Louis, virtual assistant, in front of a colourful mural" />
     <div className="cover-copy"><div className="cover-eyebrow"><Sparkles size={14}/> Your day, made easier</div><h1>MacDonald Louis<span>Your virtual right-hand person.</span></h1><p>A little less busy. A lot more productive.<br/>Let’s make room for what you do best.</p></div>
     <div className="cover-tag"><Monitor size={14} className="text-primary"/> Real support. Wherever you are.</div>
    </section>
