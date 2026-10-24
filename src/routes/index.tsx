@@ -4,6 +4,9 @@ import { ArrowDownToLine, ArrowRight, BadgeCheck, CalendarDays, Check, CheckCirc
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import officeImage from '@/assets/macdonald-office.jpg';
+import coverImage from '@/assets/macdonald-cover.jpg';
+import portraitImage from '@/assets/macdonald-portrait.jpg';
+import coverPhoneImage from '@/assets/macdonald-cover-phone.jpg';
 
 export const Route = createFileRoute('/')({
  head: () => ({ meta: [
@@ -45,12 +48,13 @@ function Index() {
   </div></header>
   <main className="page-shell">
    <section className="cover" aria-label="Meet MacDonald Louis">
-    <img src={officeImage} width={1536} height={1024} alt="Illustrative portrait of a virtual assistant working at a bright, organized home office" />
+     <img className="cover-wide" src={coverImage} width={1536} height={512} alt="MacDonald Louis, virtual assistant, in front of a colourful mural" />
+     <img className="cover-phone" src={coverPhoneImage} width={1024} height={880} alt="MacDonald Louis, virtual assistant, in front of a colourful mural" />
     <div className="cover-copy"><div className="cover-eyebrow"><Sparkles size={14}/> Your day, made easier</div><h1>MacDonald Louis<span>Your virtual right-hand person.</span></h1><p>A little less busy. A lot more productive.<br/>Let’s make room for what you do best.</p></div>
     <div className="cover-tag"><Monitor size={14} className="text-primary"/> Real support. Wherever you are.</div>
    </section>
    <section className="profile-band" id="profile">
-    <div className="profile-main"><img className="avatar" src={officeImage} width={128} height={128} alt="Illustrative profile portrait"/>
+    <div className="profile-main"><img className="avatar" src={portraitImage} width={1024} height={1024} alt="Portrait of MacDonald Louis"/>
      <div><div className="profile-name">MacDonald Louis <BadgeCheck size={21} className="text-primary"/></div><p className="profile-title">Virtual Assistant · Your partner in productivity</p><div className="profile-detail"><Globe size={13}/> Working remotely. Connecting globally.</div></div>
      <div className="profile-actions"><Button onClick={() => contact()}><Send/> Message me</Button><Button variant="secondary" onClick={() => { setTab('Services'); document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }); }}><Laptop/> View services</Button></div>
     </div>
@@ -79,7 +83,7 @@ function Index() {
     <div className="services-foot"><div><h3>Not sure where to start?</h3><p>Tell me what keeps landing on your desk, and we’ll shape a support plan that fits — one task, one day a week, or simply as you need it.</p></div><Button variant="outline" onClick={() => contact()}>Start the conversation <ArrowRight/></Button></div>
    </section>
   </main>
-  <footer className="footer"><span>© 2026 MacDonald Louis. Made for meaningful connections.</span><span>Independent portfolio · Illustrative imagery <Heart size={11}/></span></footer>
+  <footer className="footer"><span>© 2026 MacDonald Louis. Made for meaningful connections.</span><span>Independent portfolio <Heart size={11}/></span></footer>
   <Dialog open={contactOpen} onOpenChange={setContactOpen}><DialogContent className="max-w-md"><DialogHeader><DialogTitle>Let’s make your day a little lighter.</DialogTitle><DialogDescription>Tell MacDonald what you have in mind.</DialogDescription></DialogHeader><form className="inquiry-form" onSubmit={saveInquiry}><label className="form-field">Your name<input name="name" placeholder="Full name" required/></label><label className="form-field">Email address<input name="email" type="email" placeholder="you@example.com" required/></label><label className="form-field">How can I help?<select name="service" value={selectedService} onChange={event => setSelectedService(event.target.value)}><option>General support</option>{[...new Set([...coreServices.map(offer => offer.name), ...services.map(service => service.name)])].map(name => <option key={name}>{name}</option>)}</select></label><label className="form-field">A little about your project<textarea name="message" rows={3} placeholder="What would you like a helping hand with?" required/></label><p className="dialog-note">Contact details are coming soon. For now, save your inquiry as a draft — it won’t be sent.</p><Button type="submit"><ArrowDownToLine/>{downloaded ? 'Download draft again' : 'Save inquiry draft'}</Button>{downloaded && <p className="text-success text-xs flex items-center gap-2" role="status"><CheckCircle2 size={15}/> Your inquiry draft has been downloaded. Nothing was sent.</p>}</form></DialogContent></Dialog>
  </>;
 }
