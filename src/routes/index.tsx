@@ -23,13 +23,13 @@ const services = [
  { icon: Users, name: 'Social Media Support', description: 'Show up consistently and stay connected with the people who matter.', tasks: 'Content scheduling · Community support' },
  { icon: MessageCircle, name: 'Customer Support', description: 'Thoughtful, friendly responses that make your customers feel heard.', tasks: 'Customer inquiries · Follow-ups' },
 ];
-const coreServices = [
+export const coreServices = [
  { icon: CalendarDays, name: 'Scheduling & Calendar', short: 'scheduling', tone: 'tone-cal', description: 'Your week, planned without the endless back-and-forth. I find the time, send the invite, and make sure nothing lands on top of something else.', tasks: ['Book and confirm meetings', 'Reschedules handled calmly', 'Time-zone friendly reminders', 'A gentle preview of what’s coming'], commitment: 'Meetings usually sorted the same day' },
  { icon: Mail, name: 'Email & Inbox', short: 'email', tone: 'tone-mail', description: 'A calmer inbox where the important things rise to the top and the noise never reaches you. Replies drafted in your voice, ready for your nod.', tasks: ['Sort, flag and archive', 'Draft replies in your voice', 'Follow-ups tracked to the end', 'Newsletters and noise filtered'], commitment: 'Inbox tidied every weekday' },
  { icon: ClipboardList, name: 'Everyday Admin', short: 'admin', tone: 'tone-admin', description: 'The small, necessary jobs that quietly eat your day. Data entry, prep, paperwork and research — done properly and out of your way.', tasks: ['Data entry and record updates', 'Travel and appointment prep', 'Documents named and filed', 'Research and quick summaries'], commitment: 'Weekly batch, or as it comes' },
 ];
-const hourly = { rate: '$25', unit: 'an hour', note: 'Billed in half-hour blocks. No minimum hours and no contract — for the weeks when you just need a hand.' };
-const packages = [
+export const hourly = { rate: '$25', unit: 'an hour', note: 'Billed in half-hour blocks. No minimum hours and no contract — for the weeks when you just need a hand.' };
+export const packages = [
  { name: 'Starter', bestFor: 'A calmer week, without much planning', price: '$240', per: 'a month', hours: '10 hours a month', featured: false, includes: ['Scheduling for one person', 'Inbox tidied twice a week', 'Admin tasks in one weekly batch', 'A short note on what got done'] },
  { name: 'Regular', bestFor: 'The steady hand most people need', price: '$560', per: 'a month', hours: '25 hours a month', featured: true, includes: ['Scheduling handled daily', 'Inbox tidied every weekday', 'Admin tasks as they come', 'Draft replies written in your voice'] },
  { name: 'Full support', bestFor: 'A full second pair of hands', price: '$1,000', per: 'a month', hours: '50 hours a month', featured: false, includes: ['Calendar, inbox and admin covered', 'Priority same-day turnaround', 'Social media and customer help', 'A monthly review of what’s working'] },
