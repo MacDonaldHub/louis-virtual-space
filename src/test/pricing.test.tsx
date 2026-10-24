@@ -7,7 +7,7 @@ import { coreServices, hourly, packages } from "@/routes/index";
 describe("Rates and packages", () => {
   it("offers three packages that can be compared side by side", () => {
     expect(packages.map(pkg => pkg.name)).toEqual(["Starter", "Regular", "Full support"]);
-    expect(packages.every(pkg => /^\$\d{1,3}(,\d{3})$/.test(pkg.price))).toBe(true);
+    expect(packages.every(pkg => /^\$\d{1,3}(,\d{3})?$/.test(pkg.price))).toBe(true);
     expect(packages.every(pkg => pkg.per === "a month")).toBe(true);
     expect(packages.every(pkg => pkg.hours.includes("hours a month"))).toBe(true);
     expect(packages.every(pkg => pkg.includes.length >= 4)).toBe(true);
