@@ -2,7 +2,7 @@
 
 create a website using html and css about MacDonald Louis, a virtual assistant, use a facebook theme, a tahoma font and ensure that the website has corresponding images that portrays virtual assistant. Make it creative and imagine it
 
-This project was built with [Lovable](https://lovable.dev).
+This project was built by MacDonald with aid from [Lovable](https://lovable.dev).
 
 **Live app**: https://louis-virtual-space.lovable.app
 
