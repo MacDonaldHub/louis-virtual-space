@@ -101,15 +101,15 @@ The site can be published directly from Lovable, or deployed from this repositor
 
 - **Code drafted by:** MacDonald, using Visual Studio Code
 - **Design completed by:** [Lovable](https://lovable.dev), from the prompts provided
-- **Client / VA:** [Name of the VA]
+- **Client / VA:** [louis-virtual-space]
 
 ## Contact
 
 For questions or collaboration:
 
 - **Name:** MacDonald
-- **Email:** [your-email@example.com]
-- **GitHub:** [@your-username](https://github.com/your-username)
+- **Email:** [macmarylouis@gmail.com]
+- **GitHub:** (https://github.com/MacDonaldHub)
 
 ## License
 
