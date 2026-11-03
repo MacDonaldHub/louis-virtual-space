@@ -1,14 +1,14 @@
-# [Your Name] | Virtual Assistant Website
+# MacDonald Louis | Virtual Assistant Website
 
 A modern, responsive website for a Virtual Assistant (VA) business, showcasing services, experience, and a simple way for clients to get in touch.
 
-**Live site:** [add your Lovable/published URL here]
+**Live site:** (https://lovable.dev/projects/ca82d60c-4817-4509-859e-2e577782e7ea)
 
 ---
 
 ## About the Project
 
-This website presents [Your Name / Business Name] as a professional virtual assistant, covering services such as administrative support, email and calendar management, customer support, data entry, and research. It is designed to be clean, fast, and easy for potential clients to navigate on any device.
+This website presents MacDonald Louis as a professional virtual assistant, covering services such as administrative support, email and calendar management, customer support, data entry, and research. It is designed to be clean, fast, and easy for potential clients to navigate on any device.
 
 ## How It Was Built
 
